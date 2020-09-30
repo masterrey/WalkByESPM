@@ -127,5 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"Aberto","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"AnguloAberto","value":{"$content":90.0,"$type":"System.Single"},"$version":"A"},{"name":"AnguloFechado","value":{"$content":0.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
