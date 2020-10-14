@@ -241,6 +241,7 @@ MonoBehaviour:
   targetobject: {fileID: 0}
   timelooking: 0
   crosshair: {fileID: 3617613629646436983}
+  ctrl: {fileID: 1797508709469450294}
 --- !u!1 &8165402519958801880
 GameObject:
   m_ObjectHideFlags: 0

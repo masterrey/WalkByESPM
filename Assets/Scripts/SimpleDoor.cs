@@ -16,7 +16,7 @@ public class SimpleDoor : MonoBehaviour
         
     }
 
-    public void Clicked()
+    public void Clicked(GameObject ob)
     {
         if (transform.localRotation.eulerAngles.y == 90)
         {

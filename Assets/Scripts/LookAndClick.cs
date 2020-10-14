@@ -8,15 +8,20 @@ public class LookAndClick : MonoBehaviour
     public GameObject targetobject;
     public float timelooking=0;
     public GameObject crosshair;
+    public CharacterController ctrl;
+    Vector3 moveto;
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveto = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //se a subtraçao da posiçao e do moveto der algum valor ele usa este como direçao e velocidade para o destino
+        ctrl.SimpleMove(moveto-transform.position );
+
         // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
         // at.
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _maxDistance))
@@ -41,7 +46,8 @@ public class LookAndClick : MonoBehaviour
                 timelooking += Time.deltaTime;
                 if (timelooking > 3)
                 {
-                    targetobject.SendMessage("Clicked");
+                    //o segundo parametro é a referencia de si mesmo para poder receber mensagens
+                    targetobject.SendMessage("Clicked",gameObject);
                     timelooking = 0;
                 }
             }
@@ -52,5 +58,10 @@ public class LookAndClick : MonoBehaviour
             
 
         }
+    }
+    //recebe a posiçao da bolinha e guarda na variavel moveto
+    void ToPosition(Vector3 pos)
+    {
+        moveto = pos;
     }
 }
