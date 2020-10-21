@@ -10,17 +10,23 @@ public class LookAndClick : MonoBehaviour
     public GameObject crosshair;
     public CharacterController ctrl;
     Vector3 moveto;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        moveto = transform.position;
+        moveto = transform.parent.transform.position;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //se a subtraçao da posiçao e do moveto der algum valor ele usa este como direçao e velocidade para o destino
-        ctrl.SimpleMove(moveto-transform.position );
+        Vector3 destino = moveto - transform.parent.transform.position;
+        ctrl.SimpleMove(destino);
+
+        //pega velocidade do personagem e usa como volume dos passos 
+        audioSource.volume =ctrl.velocity.magnitude;
 
         // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
         // at.
