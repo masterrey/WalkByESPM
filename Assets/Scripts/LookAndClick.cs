@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LookAndClick : MonoBehaviour
 {
@@ -54,6 +55,14 @@ public class LookAndClick : MonoBehaviour
                 {
                     //o segundo parametro é a referencia de si mesmo para poder receber mensagens
                     targetobject.SendMessage("Clicked",gameObject);
+                    //pega o objeto do tipo button 
+                    Button btn = targetobject.GetComponent<Button>();
+                    //se conseguiu pegar é pq é um botao da ui
+                    if (btn)
+                    {
+                        //chamar a acao de clicar
+                        btn.onClick.Invoke();
+                    }
                     timelooking = 0;
                 }
             }
