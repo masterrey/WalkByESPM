@@ -6,6 +6,7 @@ public class LightSwitch : MonoBehaviour
 {
     public Light[] lights;
     AudioSource audioSource;
+    public GameObject objtoenable;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,10 @@ public class LightSwitch : MonoBehaviour
             {
                 alight.enabled = !alight.enabled;
                 switchstate = alight.enabled;
+                if (objtoenable)///liga qualquer coisa
+                {
+                    objtoenable.SetActive(!objtoenable.activeSelf);
+                }
             }
         }
         if (switchstate)
