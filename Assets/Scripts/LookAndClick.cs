@@ -9,6 +9,7 @@ public class LookAndClick : MonoBehaviour
     public GameObject targetobject;
     public float timelooking=0;
     public GameObject crosshair;
+    Material matcross;
     public CharacterController ctrl;
     Vector3 moveto;
     AudioSource audioSource;
@@ -17,6 +18,7 @@ public class LookAndClick : MonoBehaviour
     {
         moveto = transform.parent.transform.position;
         audioSource = GetComponent<AudioSource>();
+        matcross = crosshair.GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class LookAndClick : MonoBehaviour
         //se a subtraçao da posiçao e do moveto der algum valor ele usa este como direçao e velocidade para o destino
         Vector3 destino = moveto - transform.parent.transform.position;
         ctrl.SimpleMove(destino);
-
+       
         //pega velocidade do personagem e usa como volume dos passos 
         audioSource.volume =ctrl.velocity.magnitude;
 
@@ -37,6 +39,7 @@ public class LookAndClick : MonoBehaviour
             //verifica se tem objeto guardado na memoria
             if (targetobject == null) //se nao tem
             {
+                
                 //verifica se o objeto tem o tag player
                 if (hit.collider.CompareTag("Player"))
                 {
@@ -44,6 +47,11 @@ public class LookAndClick : MonoBehaviour
                     targetobject = hit.collider.gameObject;
                     //reseta o contador
                     timelooking = 0;
+                    matcross.SetColor("_BaseColor", Color.red);
+                }
+                else
+                {
+                    matcross.SetColor("_BaseColor", Color.green);
                 }
             }
             //checa se o objetod a memoria é o mesmo q capturou no raycast
