@@ -9,7 +9,7 @@ public class PassLock : MonoBehaviour
     public TextMesh lcdDisplay;
     public bool armed = true;
     public GameObject objectToUnlock;
-
+    public GameObject objtoenable;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,10 @@ public class PassLock : MonoBehaviour
                 armed = false;
                 lcdDisplay.text = "unlocked";
                 objectToUnlock.SendMessage("Unlock");
+                if (objtoenable)///liga qualquer coisa
+                {
+                    objtoenable.SetActive(!objtoenable.activeSelf);
+                }
             }
             else
             {
